@@ -11,12 +11,14 @@ router.get('/', function (req, res, next) {
     const matchingProducts = [];
     catalog.forEach(item => {
         if (item.name.toLowerCase().includes(term.toLowerCase())) {
-            matchingProducts.push(item); 
+            matchingProducts.push(item);
         }
     });
 
     res.render('search_results', {
         searchResults: matchingProducts,
+        loginId: 'matt',
+        searchTerm: term,
     });
 });
 

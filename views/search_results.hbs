@@ -14,3 +14,22 @@
 <div>
 <a class="btn btn-default" href="/">Back</a>
 </div>
+
+<script>
+    (function () {
+        gbTracker.sendSearchEvent({
+            search: {
+                query: '{{searchTerm}}',
+                origin: {
+                    search: true
+                },
+                totalRecordCount: 3,
+                pageInfo: {
+                    recordStart: 1,
+                    recordEnd: 3
+                }
+            }
+        });
+    })();
+    
+</script>
