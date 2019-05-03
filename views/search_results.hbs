@@ -1,3 +1,9 @@
+<script>
+    function addToCart(data) {
+        alert(this);
+    }
+</script>
+
 <h2>Search Results:</h2>
 {{#each searchResults}}
     <div class="card" style="width: 18rem; display:inline-block; margin: 0.5rem; ">
@@ -7,10 +13,26 @@
             <p class="card-text">{{this.desc}}</p>
             <p class="card-text">ID: {{this.id}}</p>
             <p class="card-text">SKU: {{this.sku}}</p>
-            <a href="#" class="btn btn-primary" data-product-id="{{this.id}}">Add to Cart</a>
+            <a onclick="addToCart" href="#" class="btn btn-primary" data-product-id="{{this.id}}">Add to Cart</a>
         </div>
     </div>
 {{/each}}
 <div>
 <a class="btn btn-default" href="/">Back</a>
 </div>
+<script>
+    gbTracker.sendAutoSearchEvent({
+  search: {
+      // e.g. 'e30a4611-64b0-49a1-ad56-ab8fa2ffcc10'
+      id: 'e30a4611-64b0-49a1-ad56-ab8fa2ffcc10',
+
+      origin: {
+        recommendations: false,
+        navigation:      false,
+        dym:             false,
+        sayt:            false,
+        search:          true
+      }
+  }
+});
+</script>
