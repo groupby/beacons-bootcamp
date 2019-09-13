@@ -1,11 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const config = require('../config');
 
-const STORE_NAME = require('../data').STORE_NAME;
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: STORE_NAME });
-});
-
-module.exports = router;
+module.exports = function (req, res, next) {
+    res.render('index', {
+        title:            config.storeName,
+        storeProductType: config.storeProductType,
+    });
+};

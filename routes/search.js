@@ -1,24 +1,38 @@
-var express = require('express');
-var router = express.Router();
+const catalog = require('../catalog');
 
-const catalog = require('../data').catalog;
+module.exports = function (req, res, next) {
+    const searchTerm = req.query.q;
+    console.log(`Search - Search term: ${searchTerm}`);
 
-/* GET search results. */
-router.get('/', function (req, res, next) {
-    const term = req.query.searchterm;
-    console.log(`Search term: ${term}`);
-
-    const matchingProducts = [];
-    catalog.forEach(item => {
-        if (item.name.toLowerCase().includes(term.toLowerCase())) {
-            matchingProducts.push(item); 
-        }
+    // Basic search engine - If product name includes the search term, it's a match.
+    const matchingProducts = catalog.filter(item => {
+        return item.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
-    res.render('search_results', {
+    // Mock "facets", which are groups of products that a shopper can select.
+    // In GroupBy these are called "navigations".
+    const facets = [
+        {
+            name: "All products",
+            selected: true,
+        },
+        {
+            name: "Survival Equipment",
+            selected: false,
+        },
+        {
+            name: "Marine Equipment",
+            selected: false,
+        },
+        {
+            name: "Food",
+            selected: false,
+        },
+    ];
+
+    res.render('search', {
         searchResults: matchingProducts,
+        facets,
     });
-});
-
-module.exports = router;
+}
 

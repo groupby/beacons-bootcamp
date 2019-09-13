@@ -1,8 +1,10 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}, the finest source of beacon products.</p>
+<p>Welcome to {{title}}, the finest source of {{storeProductType}} products.</p>
 
 <form method="GET" action="/search">
-  Search:<br>
-  <input type="text" name="searchterm">
-  <input type="submit" value="Search">
+    <div class="form-group">
+        <span>Search:</span>
+        <input type="text" name="q">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
 </form>

@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+img.product-page-product-img {
+  width: 100%;
+  max-width: 400px;
+}
+
+img.cart-page-product-img {
+  width: 100%;
+  max-width: 400px;
+}
+
+li.selected-facet {
+  font-weight: bold;
+}

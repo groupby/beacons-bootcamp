@@ -1,0 +1,32 @@
+<h2>Search Results:</h2>
+
+<div class="row">
+    <div class="col" style="background-color: lightgrey">
+        <span>Facets:</span>
+        <ul>
+            {{#each facets}}
+            <li class="{{#if this.selected}}selected-facet{{/if}}">{{this.name}}</li>
+            {{/each}}
+        </ul>
+
+    </div>
+    <div class="col-9">
+        {{#each searchResults}}
+        <div class="card" style="width: 18rem; display:inline-block; margin: 0.5rem; ">
+            <img class="card-img-top" src="{{this.imgUrl}}" alt="{{this.name}}">
+            <div class="card-body">
+                <a href="/product/{{this.id}}">
+                    <h5 class="card-title">{{this.name}}</h5>
+                </a>
+                <p class="card-text">{{this.desc}}</p>
+                <p class="card-text">ID: {{this.id}}</p>
+                <p class="card-text">SKU: {{this.sku}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-default" href="/">Home</a>
+</div>

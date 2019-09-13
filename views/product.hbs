@@ -1,0 +1,19 @@
+<h2>Product: {{product.name}}</h2>
+
+<img class="product-page-product-img" src="{{product.imgUrl}}" alt="{{product.name}} image">
+
+<p>ID: {{product.id}}</p>
+<p>SKU: {{product.sku}}</p>
+
+<p>{{product.desc}}</p>
+
+<form method="POST" action="/addToCart">
+    <input type="hidden" name="productId" value="{{product.id}}">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </div>
+</form>
+
+<div>
+    <a class="btn btn-default" href="/">Home</a>
+</div>
