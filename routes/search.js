@@ -30,9 +30,37 @@ module.exports = function (req, res, next) {
         },
     ];
 
+    const gbiSelectedNavigation = facets.map(facet => {
+        return {
+            name: facet.name,
+            displayName: facet.name,
+            refinements: [
+                {
+                    type: 'Value',
+                    value: facet.name,
+                },
+            ],
+            range: false,
+            or: false,
+        };
+    });
+
+    const gbiRecords = matchingProducts.map(product => {
+        return {
+            _u: `http://www.example.com/${product.id}`,
+        };
+    });
+
     res.render('search', {
         searchResults: matchingProducts,
         facets,
+        searchTerm,
+        totalMatches: matchingProducts.length,
+        recordStart: 1,
+        recordEnd: 3,
+        gbiArea: 'Dev',
+        gbiSelectedNavigation: JSON.stringify(gbiSelectedNavigation),
+        gbiRecords: JSON.stringify(gbiRecords),
     });
 }
 

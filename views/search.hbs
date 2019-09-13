@@ -30,3 +30,24 @@
 <div>
     <a class="btn btn-default" href="/">Home</a>
 </div>
+
+<script>
+    gbTracker.sendSearchEvent({
+        search: {
+            query: '{{searchTerm}}',
+            originalQuery: '{{searchTerm}}',
+            correctedQuery: '{{searchTerm}}',
+            totalRecordCount: '{{totalMatches}}',
+            pageInfo: {
+                recordStart: '{{recordStart}}',
+                recordEnd: '{{recordEnd}}',
+            },
+            area: '{{gbiArea}}',
+            selectedNavigation: {{{gbiSelectedNavigation}}},
+            records: {{{gbiRecords}}},
+            origin: {
+                search: true,
+            },
+        },
+    });
+</script>
